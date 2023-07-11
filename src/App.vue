@@ -1,16 +1,19 @@
 <script>
 import LocationWeather from '@/components/LocationWeather.vue';
+import TheTemperature from './components/TheTemperature.vue';
 
 export default {
   name: 'App',
   components: {
-    LocationWeather
+    LocationWeather,
+    TheTemperature
   }
 }
 </script>
 
 <template>
   <LocationWeather/>
+  <TheTemperature/>
 </template>
 
 <style>
@@ -20,7 +23,7 @@ export default {
   font-family: 'Rubik', sans-serif;
   margin: 0;
   padding: 0;
-  width: 100%;
+  max-width: 100%;
   background-color: rgba(72, 150, 222, 1);
   color: white;
 }
