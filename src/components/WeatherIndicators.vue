@@ -6,71 +6,114 @@
 
 <template>
    <div class="indicators">
-      <div class="indicators__sectionfirst">
-         
-         <img class="img" src="../assets/img/windspeed.png" alt="">
-         <div class="indicators__title">
-            3 м/s
-            <div class="indicators__subtitle">Wind speed</div>
+      <div class="indicators__firstsection">
+         <div class="indicators__blocksgrid">
+            <img class="imgfirstsection" src="../assets/img/windspeed.png" alt="">
+            <div class="indicators__alltitle">
+               <div class="indicators__title">3 m/s</div>
+               <div class="indicators__subtitle">Wind speed</div>
+            </div>
          </div>
-         
-         <img class="img" src="../assets/img/humidity.png" alt="">
-         <div class="indicators__title">
-            40%
-               <div class="indicators__subtitle">
-               Humidity
-               </div>
+         <div class="indicators__blocksgrid">
+            <img class="imgfirstsection" src="../assets/img/humidity.png" alt="">
+            <div class="indicators__alltitle">
+               <div class="indicators__title">40%</div>
+               <div class="indicators__subtitle">Humidity</div>
+            </div>
          </div>
-
-         <img class="img" src="../assets/img/barometr.png" alt="">
-         <div class="indicators__title">
-            750mm
-            <div class="indicators__subtitle">
-            Pressure
+         <div class="indicators__blocksgrid">
+            <img class="imgfirstsection" src="../assets/img/barometr.png" alt="">
+            <div class="indicators__alltitle">
+               <div class="indicators__title">999hPa</div>
+               <div class="indicators__subtitle">Pressure</div>
+            </div>
          </div>
-         
+      </div>
+      <div class="indicators__secondsection">
+         <div class="indicators__secondblocksgrid">
+            <div class="indicators__hour">Now</div>
+            <img class="imgsecondsection" src="../assets/img/sun.png" alt="">
+            <div class="indicators__degree">20&#176;</div>
          </div>
-      
-
       </div>
    </div>   
 </template>
 
 <style lang="scss">
 .indicators {
-   padding: 5px 20px;
+   padding: 15px 20px;
    font-size: 26px;
    background-color: rgba(43, 121, 193, 1);
    border-radius: 15px;
    margin: 0px 30px 30px 30px;
    display: grid;
-   grid-template-columns: 1fr 1fr;
+   grid-template-columns: 1fr 5fr;
+   
 
-   &__sectionfirst {
-      border-right: 4px solid white;
+   &__firstsection {
       background-color: inherit;
-      margin-right: 400px;
+      border-right: 4px solid white;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      // padding-right: 10px;
+   }
+
+   &__blocksgrid {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      background-color: inherit;
+      align-items: center;
+   }
+
+   &__alltitle {
+      background-color: inherit;
    }
 
    &__title {
-      font-size: 48px;
       background-color: inherit;
+      font-size: 3rem;
    }
 
    &__subtitle {
       background-color: inherit;
-      font-size: 26px;
-      transform: translate(0, -55%);
-      
    }
+
+   &__secondsection {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 10px;
+      background-color: inherit;
+   }
+
+   &__secondblocksgrid {
+      text-align: center;
+      background-color: inherit;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0px 20px 0px;
+      gap: 15px;
+   }
+
+   &__hour {
+      background-color: inherit;
+      font-size: 2rem;
+   }
+
+   &__degree {
+      background-color: inherit;
+      font-size: 4rem;
+   }
+
 }
 
-.img {
+.imgfirstsection {
    background-color: inherit;
-   float: left;
-   padding-top: 55px;
+}
+
+.imgsecondsection {
+   background-color: inherit;
+   width: 100px;
+   padding-left: 90px;
 }
 
 </style>

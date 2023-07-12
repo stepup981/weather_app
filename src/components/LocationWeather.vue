@@ -10,9 +10,12 @@
          Kirov
       </div>
          <div class="location__change">
+            <img src="../assets/img/mylocimg.png" alt="MyLoc">
             <div class="location__mylocation">
-               <img src="../assets/img/mylocimg.png" alt="MyLoc" style="float:left; transform: translate(0, 35%);">
                My location
+            </div>
+            <div class="location__stick">
+
             </div>
             <div class="location__changelocation">
                Change city
@@ -23,36 +26,32 @@
 
 <style lang="scss">
 .location {
-   padding: 30px 0px 0px 50px;
-   font-size: 20px;
+   padding: 20px 0px 0px 50px;
+   font-size: 1.3rem;
 
    &__city {
-      font-size: 64px;
+      font-size: 3.8rem;
    }
 
    &__change {
-      padding-top: 8px;
       display: flex;
       justify-content: flex-start;
+      align-items: center;
       opacity: 0.7;
-      gap: 8px;
-      transform: translate(0, -90%);
    }
 
    &__mylocation {
       padding-right: 8px;
-      position: relative;
-      display: inline-block;
+   }
 
-         &::after {
-            content: " ";
-            background: #ffffff;
-            width: 1.3px;
-            height: 13px;
-            bottom: 15px;
-            left: 138px;
-            position: absolute;
-         }
+   &__stick {
+      background: white;
+      width: 1.5px;
+      height: 13px;
+   }
+
+   &__changelocation {
+      padding-left: 8px;
    }
 
 }
