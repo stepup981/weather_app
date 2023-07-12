@@ -11,7 +11,7 @@
       </div>
          <div class="location__change">
             <div class="location__mylocation">
-               <img src="../assets/img/mylocimg.png" alt="MyLoc" style="float:left;">
+               <img src="../assets/img/mylocimg.png" alt="MyLoc" style="float:left; transform: translate(0, 35%);">
                My location
             </div>
             <div class="location__changelocation">
@@ -36,12 +36,25 @@
       justify-content: flex-start;
       opacity: 0.7;
       gap: 8px;
+      transform: translate(0, -90%);
    }
 
    &__mylocation {
-      border-right: 2px solid white;
       padding-right: 8px;
+      position: relative;
+      display: inline-block;
+
+         &::after {
+            content: " ";
+            background: #ffffff;
+            width: 1.3px;
+            height: 13px;
+            bottom: 15px;
+            left: 138px;
+            position: absolute;
+         }
    }
+
 }
 
 </style>

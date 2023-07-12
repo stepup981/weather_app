@@ -22,7 +22,8 @@
    // align-items: center;
    display: grid;
    text-align: center;
-   padding-top: 10px;
+   // padding-top: 10px;
+   transform: translate(0, -10%);
 
    &__degree {
       font-size: 180px;
@@ -30,7 +31,7 @@
    }
 
    &__weather {
-      transform: translate(0, -45%);
+      transform: translate(0, -100%);
       font-size: 60px;
    }
 }

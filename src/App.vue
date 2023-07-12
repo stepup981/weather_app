@@ -1,12 +1,14 @@
 <script>
 import LocationWeather from '@/components/LocationWeather.vue';
 import TheTemperature from './components/TheTemperature.vue';
+import WeatherIndicators from './components/WeatherIndicators.vue';
 
 export default {
   name: 'App',
   components: {
     LocationWeather,
-    TheTemperature
+    TheTemperature,
+    WeatherIndicators
   }
 }
 </script>
@@ -14,6 +16,7 @@ export default {
 <template>
   <LocationWeather/>
   <TheTemperature/>
+  <WeatherIndicators/>
 </template>
 
 <style>
