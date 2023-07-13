@@ -1,45 +1,34 @@
 <script>
    export default {
       name: "LocationWeather",
-      props: {
-         show: {
-            type: Boolean,
-            default: false
-         }
-      },
       methods: {
-         hideDialog() {
-            this.location__change('update:show', false)
+         searchBlock() {
+            document.querySelector(".search").style.display = "block";
          }
-      },
-     
    }
+}
 </script>
 
 <template>
    <div class="location">
-      <div class="location__city">
-         Kirov
-      </div>
-         <div class="location__change">
-            <img src="../assets/img/mylocimg.png" alt="MyLoc">
-            <div class="location__mylocation">
-               My location
-            </div>
-            <div class="location__stick">
-
-            </div>
-            <div 
-               class="location__changelocation"
-              
-               >
-               Change city
-            </div>
+      <div class="location__city" id="city">Kirov</div>
+      <div class="location__change">
+         <img src="../assets/img/mylocimg.png" alt="MyLoc">
+         <div class="location__mylocation">
+            My location
          </div>
-         <div class="search" v-if="show" @click="hideDialog">
-      <input type="text" placeholder="Enter your location">
-      <button></button>
-   </div>
+         <div class="location__stick"></div>
+         <div 
+            class="location__changelocation"
+            @click="searchBlock()"
+            >
+            Change city
+         </div>
+      </div>
+      <div class="search">
+         <input type="text" placeholder="Enter your location">
+         <button></button>
+      </div>
    </div>
 </template>
 
@@ -71,6 +60,7 @@
 
    &__changelocation {
       padding-left: 8px;
+      cursor: pointer;
    }
 }
 .search {
@@ -83,8 +73,7 @@
    display: grid;
    grid-template-columns: 1fr 0.3fr;
    align-items: center;
-   // margin-left: 30px;
-
+   display: none;
 }
 
 input {
