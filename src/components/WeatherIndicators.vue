@@ -1,6 +1,6 @@
 <script>
    export default {
-      
+      name: "WeatherIndicators",
    }
 </script>
 
@@ -34,6 +34,21 @@
             <div class="indicators__hour">Now</div>
             <img class="imgsecondsection" src="../assets/img/sun.png" alt="">
             <div class="indicators__degree">20&#176;</div>
+         </div>
+         <div class="indicators__secondblocksgrid">
+            <div class="indicators__hour">16</div>
+            <img class="imgsecondsection" src="../assets/img/sunclouds.png" alt="">
+            <div class="indicators__degree">18&#176;</div>
+         </div>
+         <div class="indicators__secondblocksgrid">
+            <div class="indicators__hour">18</div>
+            <img class="imgsecondsection" src="../assets/img/rain.png" alt="">
+            <div class="indicators__degree">15&#176;</div>
+         </div>
+         <div class="indicators__secondblocksgrid">
+            <div class="indicators__hour">20</div>
+            <img class="imgsecondsection" src="../assets/img/storm.png" alt="">
+            <div class="indicators__degree">13&#176;</div>
          </div>
       </div>
    </div>   
@@ -90,8 +105,8 @@
       background-color: inherit;
       display: flex;
       flex-direction: column;
-      padding: 20px 0px 20px 0px;
-      gap: 15px;
+      padding: 20px 10px 20px 10px;
+      gap: 55px;
    }
 
    &__hour {
@@ -112,8 +127,9 @@
 
 .imgsecondsection {
    background-color: inherit;
-   width: 100px;
-   padding-left: 90px;
+   width: 120px;
+   height: 120px;
+   padding-left: 85px;
 }
 
 </style>
