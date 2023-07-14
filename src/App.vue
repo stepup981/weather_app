@@ -3,31 +3,20 @@ import LocationWeather from '@/components/LocationWeather.vue';
 import TheTemperature from './components/TheTemperature.vue';
 import WeatherIndicators from './components/WeatherIndicators.vue';
 
-
 export default {
   name: 'App',
   components: {
     LocationWeather,
     TheTemperature,
     WeatherIndicators,
-    
   },
-  data () {
-         return {
-            dialogVisible: true
-         }
-      }
-
 }
 </script>
 
 <template>
-  <LocationWeather  v-model:show="dialogVisible">
-    
-  </LocationWeather>
+  <LocationWeather/>
   <TheTemperature/>
   <WeatherIndicators/>
-  <!-- <MySearch/> -->
 </template>
 
 <style>

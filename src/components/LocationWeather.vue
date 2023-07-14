@@ -1,32 +1,58 @@
 <script>
+   import { API_KEY, BASE_URL} from './const'
+
+   // function getWeather() {
+   //    fetch(`${BASE_URL}?q={city.value}&appid=${API_KEY}`)
+   //       .then((response) => response.json() )
+   //       .then((data) => weatherInfo.value = data)
+   // }     
+
    export default {
       name: "LocationWeather",
+      data: () => ({
+         city: 'Kirov',
+         weather: null
+      }),
       methods: {
-         searchBlock() {
-            document.querySelector(".search").style.display = "block";
-         }
-   }
+         getWeather() {
+            fetch(`${BASE_URL}?q={city.value}&appid=${API_KEY}`)
+               .then((response) => response.json() )
+               .then((data) => weather.value = data)
+   //       getLocation() {
+   //          navigator.geolocation.getCurrentPosition((position) => {
+   //             if (navigator.geolocation) {
+   //                this.position = position.coords;
+   //             return;
+   //             } 
+   //             console.log(position.coords.latitude, position.coords.longitude);
+   //    // Здесь вы можете использовать полученные координаты для дальнейшей обработки
+   // });
+   // },
+
+   },
+   // mounted: {
+   //    getWeather
+   // }
+}
 }
 </script>
 
 <template>
    <div class="location">
-      <div class="location__city" id="city">Kirov</div>
+      <div class="location__city" id="locationCity">Kirov</div>
       <div class="location__change">
-         <img src="../assets/img/mylocimg.png" alt="MyLoc">
-         <div class="location__mylocation">
+         <!-- <img src="../assets/img/mylocimg.png" alt="MyLoc"> -->
+         <div 
+            @click="getWeather()" 
+            class="location__mylocation"
+            >
             My location
          </div>
          <div class="location__stick"></div>
-         <div 
-            class="location__changelocation"
-            @click="searchBlock()"
-            >
-            Change city
-         </div>
+         <div class="location__changelocation">Change city</div>
       </div>
       <div class="search">
-         <input type="text" placeholder="Enter your location">
+         <input v-model="city" type="text" placeholder="Enter your location">
          <button></button>
       </div>
    </div>
@@ -50,6 +76,11 @@
 
    &__mylocation {
       padding-right: 8px;
+      padding-left: 23px;
+      cursor: pointer;
+      background-image: url(../assets/img/mylocimg.png);
+      background-repeat: no-repeat;
+      background-position: left;
    }
 
    &__stick {
@@ -73,7 +104,6 @@
    display: grid;
    grid-template-columns: 1fr 0.3fr;
    align-items: center;
-   display: none;
 }
 
 input {
@@ -98,6 +128,7 @@ button {
    background-image: url(../assets/img/search.png);
    background-position: center;
    background-repeat: no-repeat;
+   cursor: pointer;
 }
 
 img {
@@ -116,5 +147,6 @@ img {
 ::-ms-input-placeholder { /* Microsoft Edge */
    color: white;
 }
+
 
 </style>
