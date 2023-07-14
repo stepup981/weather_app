@@ -1,5 +1,5 @@
 <script>
-   import { API_KEY, BASE_URL} from './const'
+   // import { API_KEY, BASE_URL} from './const'
 
    // function getWeather() {
    //    fetch(`${BASE_URL}?q={city.value}&appid=${API_KEY}`)
@@ -7,33 +7,19 @@
    //       .then((data) => weatherInfo.value = data)
    // }     
 
-   export default {
-      name: "LocationWeather",
-      data: () => ({
-         city: 'Kirov',
-         weather: null
-      }),
-      methods: {
-         getWeather() {
-            fetch(`${BASE_URL}?q={city.value}&appid=${API_KEY}`)
-               .then((response) => response.json() )
-               .then((data) => weather.value = data)
-   //       getLocation() {
-   //          navigator.geolocation.getCurrentPosition((position) => {
-   //             if (navigator.geolocation) {
-   //                this.position = position.coords;
-   //             return;
-   //             } 
-   //             console.log(position.coords.latitude, position.coords.longitude);
-   //    // Здесь вы можете использовать полученные координаты для дальнейшей обработки
-   // });
-   // },
-
-   },
-   // mounted: {
-   //    getWeather
+export default {
+   name: "LocationWeather",
+   data: () => ({
+      city: 'Kirov',
+      weather: null
+   }),
+   // methods: {
+   //    getWeather() {
+   //       fetch(`${BASE_URL}?q={city.value}&appid=${API_KEY}`)
+   //          .then((response) => response.json() )
+   //          .then((data) => weather.value = data)
+   //    },
    // }
-}
 }
 </script>
 
@@ -52,7 +38,7 @@
          <div class="location__changelocation">Change city</div>
       </div>
       <div class="search">
-         <input v-model="city" type="text" placeholder="Enter your location">
+         <input type="text" placeholder="Enter your location">
          <button></button>
       </div>
    </div>
