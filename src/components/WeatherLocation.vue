@@ -7,12 +7,12 @@
    //       .then((data) => weatherInfo.value = data)
    // }     
 
-export default {
-   name: "LocationWeather",
-   data: () => ({
-      city: 'Kirov',
-      weather: null
-   }),
+// export default {
+//    name: "LocationWeather",
+//    data: () => ({
+//       city: 'Kirov',
+//       weather: null
+//    }),
    // methods: {
    //    getWeather() {
    //       fetch(`${BASE_URL}?q={city.value}&appid=${API_KEY}`)
@@ -20,7 +20,7 @@ export default {
    //          .then((data) => weather.value = data)
    //    },
    // }
-}
+// }
 </script>
 
 <template>
@@ -93,6 +93,9 @@ export default {
    display: grid;
    grid-template-columns: 1fr 0.3fr;
    align-items: center;
+   &::placeholder {
+      color: fade(black, 60);
+   }
 }
 
 input {

@@ -1,21 +1,21 @@
 <script>
-import LocationWeather from '@/components/LocationWeather.vue';
-import TheTemperature from './components/TheTemperature.vue';
+import WeatherLocation from '@/components/WeatherLocation.vue';
+import WeatherTemperature from '@/components/WeatherTemperature';
 import WeatherIndicators from './components/WeatherIndicators.vue';
 
 export default {
   name: 'App',
   components: {
-    LocationWeather,
-    TheTemperature,
+    WeatherLocation,
+    WeatherTemperature,
     WeatherIndicators,
   },
 }
 </script>
 
 <template>
-  <LocationWeather/>
-  <TheTemperature/>
+  <WeatherLocation/>
+  <WeatherTemperature/>
   <WeatherIndicators/>
 </template>
 

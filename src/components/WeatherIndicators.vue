@@ -22,32 +22,32 @@
             </div>
          </div>
          <div class="indicators__blocksgrid">
-            <img class="imgfirstsection" src="../assets/img/barometr.png" alt="">
+            <img class="imgfirstsection" src="../assets/img/cloud.png" alt="">
             <div class="indicators__alltitle">
-               <div class="indicators__title">999hPa</div>
-               <div class="indicators__subtitle">Pressure</div>
+               <div class="indicators__title">30%</div>
+               <div class="indicators__subtitle">Cloudiness</div>
             </div>
          </div>
       </div>
       <div class="indicators__secondsection">
          <div class="indicators__secondblocksgrid">
             <div class="indicators__hour">Now</div>
-            <img class="imgsecondsection" src="../assets/img/sun.png" alt="">
+            <img class="imgsecondsection" src="../assets/img/clear-day.png" alt="">
             <div class="indicators__degree">20&#176;</div>
          </div>
          <div class="indicators__secondblocksgrid">
             <div class="indicators__hour">16</div>
-            <img class="imgsecondsection" src="../assets/img/sunclouds.png" alt="">
+            <img class="imgsecondsection" src="../assets/img/partly-cloudy-day.png" alt="">
             <div class="indicators__degree">18&#176;</div>
          </div>
          <div class="indicators__secondblocksgrid">
             <div class="indicators__hour">18</div>
-            <img class="imgsecondsection" src="../assets/img/rain.png" alt="">
+            <img class="imgsecondsection" src="../assets/img/heavy-showers.png" alt="">
             <div class="indicators__degree">15&#176;</div>
          </div>
          <div class="indicators__secondblocksgrid">
             <div class="indicators__hour">20</div>
-            <img class="imgsecondsection" src="../assets/img/storm.png" alt="">
+            <img class="imgsecondsection" src="../assets/img/thunderstorm-showers.png" alt="">
             <div class="indicators__degree">13&#176;</div>
          </div>
       </div>
@@ -106,7 +106,7 @@
       display: flex;
       flex-direction: column;
       padding: 20px 10px 20px 10px;
-      gap: 55px;
+      // gap: 35px;
    }
 
    &__hour {
@@ -127,9 +127,11 @@
 
 .imgsecondsection {
    background-color: inherit;
-   width: 120px;
-   height: 120px;
-   padding-left: 115px;
+   // width: 120px;
+   // height: 120px;
+   // padding-left: 115px;
+   width: 100%;
+   height: 70%;
 }
 
 </style>
