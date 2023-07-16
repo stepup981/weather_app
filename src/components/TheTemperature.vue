@@ -27,6 +27,7 @@
    &__weather {
       font-size: 3.8rem;
       padding-right: 30px;
+      padding-bottom: 15px;
    }
 }
 

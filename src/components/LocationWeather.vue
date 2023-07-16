@@ -25,17 +25,18 @@ export default {
 
 <template>
    <div class="location">
-      <div class="location__city" id="locationCity">Kirov</div>
-      <div class="location__change">
-         <!-- <img src="../assets/img/mylocimg.png" alt="MyLoc"> -->
-         <div 
-            @click="getWeather()" 
-            class="location__mylocation"
-            >
-            My location
+      <div class="location__blockcity">
+         <div class="location__city">Kirov</div>
+         <div class="location__change">
+            <div 
+               @click="getWeather()" 
+               class="location__mylocation"
+               >
+               My location
+            </div>
+            <div class="location__stick"></div>
+            <div class="location__changelocation">Change city</div>
          </div>
-         <div class="location__stick"></div>
-         <div class="location__changelocation">Change city</div>
       </div>
       <div class="search">
          <input type="text" placeholder="Enter your location">
@@ -48,6 +49,8 @@ export default {
 .location {
    padding: 20px 0px 0px 50px;
    font-size: 1.3rem;
+   display: grid;
+   grid-template-columns: 3.5fr 1fr;
 
    &__city {
       font-size: 3.8rem;

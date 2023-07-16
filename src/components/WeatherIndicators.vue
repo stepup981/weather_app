@@ -129,7 +129,7 @@
    background-color: inherit;
    width: 120px;
    height: 120px;
-   padding-left: 85px;
+   padding-left: 115px;
 }
 
 </style>
