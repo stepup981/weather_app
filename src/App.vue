@@ -10,6 +10,9 @@ export default {
     WeatherTemperature,
     WeatherIndicators,
   },
+  created() {
+    this.$store.dispatch('fetchWeather')
+  }
 }
 </script>
 

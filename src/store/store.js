@@ -1,15 +1,10 @@
 import createStore from 'vuex';
-// import Vue from "vue";
-// import Vuex from "vuex";
 // import axios from "axios";
-
-// Vue.use(Vuex);
 
 export default createStore ({
    state: {
       apiBase: "https://api.openweathermap.org/data/2.5/",
       apiKey: "fbec21b92ec15b7a4e9e6d10165662d4", 
-      defaultSearch: "Kirov",
       search: "",
       isError: false,
       weatherData: {},
@@ -42,4 +37,12 @@ export default createStore ({
          return state.isError;
       },
    },
+   mutations: {
+
+   },
+   actions: {
+      async fetchWeather (state) {
+         await fetch(state.apiBase,{apiKey:state.apiKey})
+      }
+   }
 })
