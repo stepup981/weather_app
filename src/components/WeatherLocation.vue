@@ -1,26 +1,7 @@
 <script>
-   // import { API_KEY, BASE_URL} from './const'
-
-   // function getWeather() {
-   //    fetch(`${BASE_URL}?q={city.value}&appid=${API_KEY}`)
-   //       .then((response) => response.json() )
-   //       .then((data) => weatherInfo.value = data)
-   // }     
-
-// export default {
-//    name: "LocationWeather",
-//    data: () => ({
-//       city: 'Kirov',
-//       weather: null
-//    }),
-   // methods: {
-   //    getWeather() {
-   //       fetch(`${BASE_URL}?q={city.value}&appid=${API_KEY}`)
-   //          .then((response) => response.json() )
-   //          .then((data) => weather.value = data)
-   //    },
-   // }
-// }
+export default {
+   name: "WeatherLocation",
+}
 </script>
 
 <template>
@@ -29,7 +10,7 @@
          <div class="location__city">Kirov</div>
          <div class="location__change">
             <div 
-               @click="getWeather()" 
+               
                class="location__mylocation"
                >
                My location

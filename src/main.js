@@ -5,9 +5,8 @@ import store from '@/store/store';
 const app = createApp(App)
 
 app
-
-   .mount('#app')
    .use(store)
+   .mount('#app')
 
 
 

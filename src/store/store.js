@@ -1,4 +1,4 @@
-import createStore from 'vuex';
+import { createStore } from 'vuex';
 // import axios from "axios";
 
 export default createStore ({
@@ -41,8 +41,8 @@ export default createStore ({
 
    },
    actions: {
-      async fetchWeather (state) {
-         await fetch(state.apiBase,{apiKey:state.apiKey})
-      }
+      // async fetchWeather (state) {
+      //    await fetch(state.apiBase,{apiKey:state.apiKey})
+      // }
    }
 })

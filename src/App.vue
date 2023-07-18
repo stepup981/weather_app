@@ -10,16 +10,18 @@ export default {
     WeatherTemperature,
     WeatherIndicators,
   },
-  created() {
-    this.$store.dispatch('fetchWeather')
-  }
+  // created() {
+  //   this.$store.dispatch('fetchWeather')
+  // }
 }
 </script>
 
 <template>
-  <WeatherLocation/>
-  <WeatherTemperature/>
-  <WeatherIndicators/>
+  <div>
+    <WeatherLocation/>
+    <WeatherTemperature/>
+    <WeatherIndicators/>
+  </div>
 </template>
 
 <style>
