@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-// import axios from "axios";
+import axios from "axios";
 
 export default createStore ({
    state: {
@@ -10,8 +10,8 @@ export default createStore ({
       weatherData: {},
    },
    getters: {
-      getWeatherCity(state) {
-         return state.weatherData.city;
+      getWeatherCountry(state) {
+         return state.weatherData.country;
       },
       getWeatherTemperaute(state) {
          const {temp, info, icon, time} = state.weatherData;
@@ -38,11 +38,44 @@ export default createStore ({
       },
    },
    mutations: {
-
+      ["SET_SEARCH"](state, search) {
+         state.search = search;
+      },
+      ["SET_WEATHER_DATA"](state, data) {
+         state.weatherData = data;
+      },
+      ["SET_ERROR"](state, value) {
+         state.isError = value;
+      },
    },
    actions: {
-      // async fetchWeather (state) {
-      //    await fetch(state.apiBase,{apiKey:state.apiKey})
-      // }
+      async fetchWeatherData ({ commit , state}, search) {
+         try {
+            commit("SET_SEARCH", search);
+            const response = await axios.get(
+               `${state.apiBase}weather?q=${search}&units=metric&APPID=${state.apiKey}`
+            );
+            const newWeatherData = {
+               name: response.data.name,
+               temp: response.data.main.temp,
+               tempMin: response.data.main.temp_min,
+               tempMax: response.data.main.temp_max,
+               feelsLike: response.data.main.feels_like,
+               description: response.data.weather[0].description,
+               icon: response.data.weather[0].icon.substring(0, 2),
+               info: response.data.weather[0].main,
+               wind: response.data.wind.speed,
+               humidity: response.data.main.humidity,
+               clouds: response.data.clouds.all,
+               country: response.data.sys.country,
+            };
+            commit("SET_WEATHER_DATA", newWeatherData);
+            commit("SET_ERROR", false);
+         } catch (error) {
+         console.log(error);
+         commit("SET_ERROR", true);
+         commit("SET_WEATHER_DATA", {});
+         }
+      },
    }
 })

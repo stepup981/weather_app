@@ -10,9 +10,9 @@ export default {
     WeatherTemperature,
     WeatherIndicators,
   },
-  // created() {
-  //   this.$store.dispatch('fetchWeather')
-  // }
+  created() {
+    this.$store.dispatch('fetchWeatherData', 'Nuuk');
+  }
 }
 </script>
 
@@ -22,6 +22,7 @@ export default {
     <WeatherTemperature/>
     <WeatherIndicators/>
   </div>
+  
 </template>
 
 <style>

@@ -1,7 +1,21 @@
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
-   name: "WeatherLocation",
-}
+  data() {
+    return {
+      search: this.$store.state.search
+    };
+  },
+  computed: {
+    ...mapGetters(["isSearched", "getWeatherCountry", "getError"])
+  },
+  methods: {
+    ...mapActions(["fetchWeatherData"]),
+    getData() {
+      this.fetchWeatherData(this.search);
+    }
+  }
+};
 </script>
 
 <template>
@@ -20,7 +34,12 @@ export default {
          </div>
       </div>
       <div class="search">
-         <input type="text" placeholder="Enter your location">
+         <input 
+         type="text" 
+         placeholder="Enter your location"
+         v-model.trim="search"
+         @keydown.enter="getData"
+         >
          <button></button>
       </div>
    </div>
