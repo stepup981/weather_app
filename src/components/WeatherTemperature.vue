@@ -1,16 +1,25 @@
 <script>
-   export default {
-      name: "TheTemperature",
+   import { mapGetters } from "vuex";
+
+export default {
+   data() {
+      return {};
+   },
+
+   computed: {
+      ...mapGetters(["getWeatherMain"])
    }
+};
 </script>
 
 <template>
    <div class="temperature">
       <div class="temperature__degree">
-         20&#176;
+         {{ Math.round(getWeatherMain.temp) }}
+         <sup>&deg;</sup>
       </div>
       <div class="temperature__weather">
-         clear
+         {{ getWeatherMain.info }}
       </div>
    </div>
 </template>

@@ -7,7 +7,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["isSearched", "getWeatherCountry", "getError"])
+    ...mapGetters(["isSearched", "getWeatherCountry", "getError"]),
+    ...mapGetters(["getWeatherMain"])
   },
   methods: {
     ...mapActions(["fetchWeatherData"]),

@@ -13,7 +13,7 @@ export default createStore ({
       getWeatherCountry(state) {
          return state.weatherData.country;
       },
-      getWeatherTemperaute(state) {
+      getWeatherMain(state) {
          const {temp, info, icon, time} = state.weatherData;
          return {
             temp,
