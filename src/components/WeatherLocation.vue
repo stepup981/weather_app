@@ -19,7 +19,15 @@ export default {
          this.isElVisible = !this.isElVisible;
       },
       getLocationHandler() {
-         
+         if (('!geolocation') in navigator) return alert('Geolocation is not supported');
+            navigator.geolocation.getCurrentPosition(
+            position => {
+               console.log(position);
+               this.fetchWeatherData(this.search,this.latitude,this.logitude)
+            },
+            
+            
+         )
       }
    },
 };
@@ -30,7 +38,12 @@ export default {
       <div class="location__blockcity">
          <!-- <div class="location__city">{{ getWeatherMain.name }}</div> -->
          <div class="location__change">
-            <div @click="getLocationHandler" class="location__mylocation">My location</div>
+            <div 
+               @click="getLocationHandler" 
+               class="location__mylocation"
+               >
+               My location
+         </div>
             <div class="location__stick"></div>
             <div 
                @click="hideEl" 
@@ -171,7 +184,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-   transition: opacity 0.8s ease;
+   transition: opacity 0.6s ease;
 }
 
 .fade-enter-from,

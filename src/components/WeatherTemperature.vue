@@ -15,8 +15,7 @@ export default {
 <template>
    <div class="temperature">
       <div class="temperature__degree">
-         {{ Math.round(getWeatherMain.temp) }}
-         <sup class="temperature__deg">&deg;</sup>
+         {{ Math.round(getWeatherMain.temp) }}&deg; 
       </div>
       <div class="temperature__weather">
          {{ getWeatherMain.info }}

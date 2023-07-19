@@ -8,6 +8,8 @@ export default createStore ({
       search: "",
       isError: false,
       weatherData: {},
+      lat: "",
+      lon: "",
    },
    getters: {
       // getWeatherCountry(state) {
@@ -39,8 +41,10 @@ export default createStore ({
       },
    },
    mutations: {
-      ["SET_SEARCH"](state, search) {
+      ["SET_SEARCH"](state, search, lat, lon) {
          state.search = search;
+         state.lat = lat;
+         state.lon = lon;
       },
       ["SET_WEATHER_DATA"](state, data) {
          state.weatherData = data;
@@ -48,13 +52,20 @@ export default createStore ({
       ["SET_ERROR"](state, value) {
          state.isError = value;
       },
+      // ["SET_LATITUDE"](state, latitude) {
+      //    state.latitude = latitude;
+      // },
+      // ["SET_LONGITUDE"](state, longitude) {
+      //    state.longitude = longitude;
+      // },
+      
    },
    actions: {
-      async fetchWeatherData ({ commit , state}, search) {
+      async fetchWeatherData ({ commit , state}, search, lat, lon) {
          try {
-            commit("SET_SEARCH", search);
+            commit("SET_SEARCH", search, lat, lon);
             const response = await axios.get(
-               `${state.apiBase}weather?q=${search}&units=metric&APPID=${state.apiKey}`
+               `${state.apiBase}weather?q=${search}&lat=${lat}&lon=${lon}&units=metric&APPID=${state.apiKey}`
             );
             const newWeatherData = {
                name: response.data.name,
@@ -69,6 +80,9 @@ export default createStore ({
                humidity: response.data.main.humidity,
                clouds: response.data.clouds.all,
                country: response.data.sys.country,
+               lat: response.data.coord.lat,
+               lon: response.data.coord.lon,
+
             };
             commit("SET_WEATHER_DATA", newWeatherData);
             commit("SET_ERROR", false);
