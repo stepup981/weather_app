@@ -1,6 +1,11 @@
 <script>
+   import { mapGetters } from "vuex"
+
    export default {
-      name: "WeatherIndicators",
+      computed: {
+         ...mapGetters(["getWeatherIndicators"])
+      },
+         
    }
 </script>
 
@@ -10,21 +15,21 @@
          <div class="indicators__blocksgrid">
             <img class="imgfirstsection" src="../assets/img/windspeed.png" alt="">
             <div class="indicators__alltitle">
-               <div class="indicators__title">3 m/s</div>
+               <div class="indicators__title">{{getWeatherIndicators.wind}}m/s</div>
                <div class="indicators__subtitle">Wind speed</div>
             </div>
          </div>
          <div class="indicators__blocksgrid">
             <img class="imgfirstsection" src="../assets/img/humidity.png" alt="">
             <div class="indicators__alltitle">
-               <div class="indicators__title">40%</div>
+               <div class="indicators__title">{{getWeatherIndicators.humidity}}%</div>
                <div class="indicators__subtitle">Humidity</div>
             </div>
          </div>
          <div class="indicators__blocksgrid">
             <img class="imgfirstsection" src="../assets/img/cloud.png" alt="">
             <div class="indicators__alltitle">
-               <div class="indicators__title">30%</div>
+               <div class="indicators__title">{{getWeatherIndicators.clouds}}%</div>
                <div class="indicators__subtitle">Cloudiness</div>
             </div>
          </div>

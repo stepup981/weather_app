@@ -10,9 +10,9 @@ export default {
     WeatherTemperature,
     WeatherIndicators,
   },
-  created() {
-    this.$store.dispatch('fetchWeatherData', 'Nuuk');
-  }
+  // created() {
+  //   this.$store.dispatch('fetchWeatherData', 'Kirov');
+  // }
 }
 </script>
 

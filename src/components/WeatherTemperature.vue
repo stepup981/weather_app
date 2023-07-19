@@ -16,7 +16,7 @@ export default {
    <div class="temperature">
       <div class="temperature__degree">
          {{ Math.round(getWeatherMain.temp) }}
-         <sup>&deg;</sup>
+         <sup class="temperature__deg">&deg;</sup>
       </div>
       <div class="temperature__weather">
          {{ getWeatherMain.info }}
@@ -35,7 +35,7 @@ export default {
 
    &__weather {
       font-size: 3.8rem;
-      padding-right: 30px;
+      padding-right: 40px;
       padding-bottom: 15px;
    }
 }

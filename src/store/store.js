@@ -10,24 +10,25 @@ export default createStore ({
       weatherData: {},
    },
    getters: {
-      getWeatherCountry(state) {
-         return state.weatherData.country;
-      },
+      // getWeatherCountry(state) {
+      //    return state.weatherData.country;
+      // },
       getWeatherMain(state) {
-         const {temp, info, icon, time} = state.weatherData;
+         const {temp, info, icon, time, name} = state.weatherData;
          return {
             temp,
             info,
             icon,
-            time
+            time,
+            name
          };
       },
       getWeatherIndicators(state) {
-         const {wind, humidity, pressure} = state.weatherData;
+         const {wind, humidity, clouds} = state.weatherData;
          return {
             wind,
             humidity,
-            pressure
+            clouds
          };
       },
       isSearched(state) {
