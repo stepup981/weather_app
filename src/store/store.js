@@ -8,8 +8,8 @@ export default createStore ({
       search: "",
       isError: false,
       weatherData: {},
-      lat: "",
-      lon: "",
+      lat: '',
+      lon: '',
    },
    getters: {
       // getWeatherCountry(state) {
@@ -41,10 +41,9 @@ export default createStore ({
       },
    },
    mutations: {
-      ["SET_SEARCH"](state, search, lat, lon) {
+      ["SET_SEARCH"](state, search,) {
          state.search = search;
-         state.lat = lat;
-         state.lon = lon;
+         
       },
       ["SET_WEATHER_DATA"](state, data) {
          state.weatherData = data;
@@ -61,36 +60,34 @@ export default createStore ({
       
    },
    actions: {
-      async fetchWeatherData ({ commit , state}, search, lat, lon) {
+      async fetchWeatherData({ commit, state }, search, lat, lon ) {
          try {
             commit("SET_SEARCH", search, lat, lon);
-            const response = await axios.get(
-               `${state.apiBase}weather?q=${search}&lat=${lat}&lon=${lon}&units=metric&APPID=${state.apiKey}`
-            );
+            const url = `${state.apiBase}weather?${search ? `q=${search}&` : ''}${lat ? `lat=${lat}&` : ''}${lon ? `lon=${lon}&` : ''}units=metric&APPID=${state.apiKey}`;
+            const response = await axios.get(url);
             const newWeatherData = {
-               name: response.data.name,
-               temp: response.data.main.temp,
-               tempMin: response.data.main.temp_min,
-               tempMax: response.data.main.temp_max,
-               feelsLike: response.data.main.feels_like,
-               description: response.data.weather[0].description,
-               icon: response.data.weather[0].icon.substring(0, 2),
-               info: response.data.weather[0].main,
-               wind: response.data.wind.speed,
-               humidity: response.data.main.humidity,
-               clouds: response.data.clouds.all,
-               country: response.data.sys.country,
-               lat: response.data.coord.lat,
-               lon: response.data.coord.lon,
-
+            name: response.data.name,
+            temp: response.data.main.temp,
+            tempMin: response.data.main.temp_min,
+            tempMax: response.data.main.temp_max,
+            feelsLike: response.data.main.feels_like,
+            description: response.data.weather[0].description,
+            icon: response.data.weather[0].icon.substring(0, 2),
+            info: response.data.weather[0].main,
+            wind: response.data.wind.speed,
+            humidity: response.data.main.humidity,
+            clouds: response.data.clouds.all,
+            country: response.data.sys.country,
+            lat: response.data.coord.lat,
+            lon: response.data.coord.lon,
             };
             commit("SET_WEATHER_DATA", newWeatherData);
             commit("SET_ERROR", false);
          } catch (error) {
-         console.log(error);
-         commit("SET_ERROR", true);
-         commit("SET_WEATHER_DATA", {});
+            console.log(error);
+            commit("SET_ERROR", true);
+            commit("SET_WEATHER_DATA", {});
          }
-      },
-   }
+         },
+      }
 })

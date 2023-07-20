@@ -1,5 +1,6 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
+// import axios from "axios";
 export default {
    data() {
       return {
@@ -13,21 +14,18 @@ export default {
    methods: {
       ...mapActions(["fetchWeatherData"]),
       getData() {
-         this.fetchWeatherData(this.search);
+         this.fetchWeatherData(this.search,this.lat,this.lon);
       },
       hideEl() {
          this.isElVisible = !this.isElVisible;
       },
       getLocationHandler() {
          if (('!geolocation') in navigator) return alert('Geolocation is not supported');
-            navigator.geolocation.getCurrentPosition(
-            position => {
-               console.log(position);
-               this.fetchWeatherData(this.search,this.latitude,this.logitude)
-            },
-            
-            
-         )
+            navigator.geolocation.getCurrentPosition(async (position) => {
+               const{latitude,longitude} = position.coords;
+
+               this.fetchWeatherData({  latitude, longitude });
+            })
       }
    },
 };
@@ -64,7 +62,7 @@ export default {
             >
             <button 
                class="search__btnloc" 
-               @click="this.fetchWeatherData(this.search)"
+               @click="getData"
                >
             </button>
             <div 
