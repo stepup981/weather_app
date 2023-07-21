@@ -1,11 +1,7 @@
 <script>
-   import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
-   data() {
-      return {};
-   },
-
    computed: {
       ...mapGetters(["getWeatherMain"])
    }
@@ -13,7 +9,10 @@ export default {
 </script>
 
 <template>
-   <div class="temperature">
+   <div
+      v-if="getWeatherMain.temp"
+      class="temperature"
+   >
       <div class="temperature__degree">
          {{ Math.round(getWeatherMain.temp) }}&deg; 
       </div>
@@ -26,7 +25,6 @@ export default {
 <style lang="scss">
 .temperature {
    text-align: center;
-   
 
    &__degree {
       font-size: 10rem;
@@ -38,5 +36,4 @@ export default {
       padding-bottom: 15px;
    }
 }
-
 </style>

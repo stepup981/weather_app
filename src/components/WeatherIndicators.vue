@@ -1,35 +1,46 @@
 <script>
-   import { mapGetters } from "vuex"
+import { mapGetters } from "vuex"
 
-   export default {
-      computed: {
-         ...mapGetters(["getWeatherIndicators"])
-      },
-         
+export default {
+   computed: {
+      ...mapGetters(["getWeatherIndicators"])
    }
+}
 </script>
 
 <template>
    <div class="indicators">
       <div class="indicators__firstsection">
          <div class="indicators__blocksgrid">
-            <img class="imgfirstsection" src="../assets/img/windspeed.png" alt="">
+            <img
+               class="imgfirstsection"
+               src="../assets/img/windspeed.png"
+               alt=""
+            >
             <div class="indicators__alltitle">
-               <div class="indicators__title">{{getWeatherIndicators.wind}}m/s</div>
+               <div class="indicators__title">{{ getWeatherIndicators.wind }}m/s</div>
                <div class="indicators__subtitle">Wind speed</div>
             </div>
          </div>
          <div class="indicators__blocksgrid">
-            <img class="imgfirstsection" src="../assets/img/humidity.png" alt="">
+            <img
+               class="imgfirstsection"
+               src="../assets/img/humidity.png"
+               alt=""
+            >
             <div class="indicators__alltitle">
-               <div class="indicators__title">{{getWeatherIndicators.humidity}}%</div>
+               <div class="indicators__title">{{ getWeatherIndicators.humidity }}%</div>
                <div class="indicators__subtitle">Humidity</div>
             </div>
          </div>
          <div class="indicators__blocksgrid">
-            <img class="imgfirstsection" src="../assets/img/cloud.png" alt="">
+            <img
+               class="imgfirstsection"
+               src="../assets/img/cloud.png"
+               alt=""
+            >
             <div class="indicators__alltitle">
-               <div class="indicators__title">{{getWeatherIndicators.clouds}}%</div>
+               <div class="indicators__title">{{ getWeatherIndicators.clouds }}%</div>
                <div class="indicators__subtitle">Cloudiness</div>
             </div>
          </div>
@@ -37,22 +48,38 @@
       <div class="indicators__secondsection">
          <div class="indicators__secondblocksgrid">
             <div class="indicators__hour">Now</div>
-            <img class="imgsecondsection" src="../assets/img/clear-day.png" alt="">
+            <img
+               class="imgsecondsection"
+               src="../assets/img/clear-day.png"
+               alt=""
+            >
             <div class="indicators__degree">20&#176;</div>
          </div>
          <div class="indicators__secondblocksgrid">
             <div class="indicators__hour">16</div>
-            <img class="imgsecondsection" src="../assets/img/partly-cloudy-day.png" alt="">
+            <img
+               class="imgsecondsection"
+               src="../assets/img/partly-cloudy-day.png"
+               alt=""
+            >
             <div class="indicators__degree">18&#176;</div>
          </div>
          <div class="indicators__secondblocksgrid">
             <div class="indicators__hour">18</div>
-            <img class="imgsecondsection" src="../assets/img/heavy-showers.png" alt="">
+            <img
+               class="imgsecondsection"
+               src="../assets/img/heavy-showers.png"
+               alt=""
+            >
             <div class="indicators__degree">15&#176;</div>
          </div>
          <div class="indicators__secondblocksgrid">
             <div class="indicators__hour">20</div>
-            <img class="imgsecondsection" src="../assets/img/thunderstorm-showers.png" alt="">
+            <img
+               class="imgsecondsection"
+               src="../assets/img/thunderstorm-showers.png"
+               alt=""
+            >
             <div class="indicators__degree">13&#176;</div>
          </div>
       </div>
@@ -75,7 +102,6 @@
       border-right: 4px solid white;
       display: grid;
       gap: 15px;
-      // padding-right: 10px;
    }
 
    &__blocksgrid {
@@ -111,7 +137,6 @@
       display: flex;
       flex-direction: column;
       padding: 20px 10px 20px 10px;
-      // gap: 35px;
    }
 
    &__hour {
@@ -123,7 +148,6 @@
       background-color: inherit;
       font-size: 4rem;
    }
-
 }
 
 .imgfirstsection {
@@ -132,11 +156,7 @@
 
 .imgsecondsection {
    background-color: inherit;
-   // width: 120px;
-   // height: 120px;
-   // padding-left: 115px;
    width: 100%;
    height: 70%;
 }
-
 </style>

@@ -4,19 +4,14 @@ import axios from "axios";
 export default createStore ({
    state: {
       apiBase: "https://api.openweathermap.org/data/2.5/",
-      apiKey: "fbec21b92ec15b7a4e9e6d10165662d4", 
-      search: "",
+      apiKey: "fbec21b92ec15b7a4e9e6d10165662d4",
       isError: false,
-      weatherData: {},
-      lat: '',
-      lon: '',
+      weatherData: {}
    },
    getters: {
-      // getWeatherCountry(state) {
-      //    return state.weatherData.country;
-      // },
       getWeatherMain(state) {
-         const {temp, info, icon, time, name} = state.weatherData;
+         const { temp, info, icon, time, name } = state.weatherData;
+
          return {
             temp,
             info,
@@ -26,44 +21,30 @@ export default createStore ({
          };
       },
       getWeatherIndicators(state) {
-         const {wind, humidity, clouds} = state.weatherData;
+         const { wind, humidity, clouds } = state.weatherData;
+         
          return {
             wind,
             humidity,
             clouds
          };
       },
-      isSearched(state) {
-         return state.search !== "";
-      },
       getError(state) {
          return state.isError;
       },
    },
    mutations: {
-      ["SET_SEARCH"](state, search,) {
-         state.search = search;
-         
-      },
       ["SET_WEATHER_DATA"](state, data) {
          state.weatherData = data;
       },
       ["SET_ERROR"](state, value) {
          state.isError = value;
       },
-      // ["SET_LATITUDE"](state, latitude) {
-      //    state.latitude = latitude;
-      // },
-      // ["SET_LONGITUDE"](state, longitude) {
-      //    state.longitude = longitude;
-      // },
-      
    },
    actions: {
-      async fetchWeatherData({ commit, state }, search, lat, lon ) {
+      async fetchWeatherData({ commit, state }, { search, latitude, longitude } ) {
          try {
-            commit("SET_SEARCH", search, lat, lon);
-            const url = `${state.apiBase}weather?${search ? `q=${search}&` : ''}${lat ? `lat=${lat}&` : ''}${lon ? `lon=${lon}&` : ''}units=metric&APPID=${state.apiKey}`;
+            const url = `${state.apiBase}weather?${search ? `q=${search}&` : ''}${latitude ? `lat=${latitude}&` : ''}${longitude ? `lon=${longitude}&` : ''}units=metric&APPID=${state.apiKey}`;
             const response = await axios.get(url);
             const newWeatherData = {
             name: response.data.name,
@@ -84,7 +65,7 @@ export default createStore ({
             commit("SET_WEATHER_DATA", newWeatherData);
             commit("SET_ERROR", false);
          } catch (error) {
-            console.log(error);
+            console.error(error);
             commit("SET_ERROR", true);
             commit("SET_WEATHER_DATA", {});
          }
