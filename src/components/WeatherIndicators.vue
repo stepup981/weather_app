@@ -92,7 +92,7 @@ export default {
    font-size: 26px;
    background-color: rgba(43, 121, 193, 1);
    border-radius: 15px;
-   margin: 0px 30px 30px 30px;
+   margin: 0px 50px 50px 50px;
    display: grid;
    grid-template-columns: 1fr 5fr;
    
