@@ -35,5 +35,15 @@ export default {
       padding-right: 40px;
       padding-bottom: 15px;
    }
+
+   &__img {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+
+   }
 }
+
+
 </style>

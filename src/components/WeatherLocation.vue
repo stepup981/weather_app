@@ -16,7 +16,6 @@ export default {
       ...mapActions(["fetchWeatherData"]),
 
       getData() {
-         console.log(this.search);
          this.fetchWeatherData({ search: this.search });
       },
 
@@ -40,7 +39,7 @@ export default {
 <template>
    <div class="location">
       <div class="location__blockcity">
-         <div class="location__city">{{ getWeatherMain.name }}</div>
+         <!-- <div class="location__city">{{ getWeatherMain.name }}</div> -->
          <div class="location__change">
             <div 
                @click="getLocationHandler" 

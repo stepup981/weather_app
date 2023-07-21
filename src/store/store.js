@@ -4,7 +4,7 @@ import axios from "axios";
 export default createStore ({
    state: {
       apiBase: "https://api.openweathermap.org/data/2.5/",
-      apiKey: "fbec21b92ec15b7a4e9e6d10165662d4",
+      apiKey: "7b0cd3aa9c808b272f5687c5c4a2997f",
       isError: false,
       weatherData: {}
    },
@@ -21,12 +21,13 @@ export default createStore ({
          };
       },
       getWeatherIndicators(state) {
-         const { wind, humidity, clouds } = state.weatherData;
+         const { wind, humidity, clouds, pressure } = state.weatherData;
          
          return {
             wind,
             humidity,
-            clouds
+            clouds,
+            pressure
          };
       },
       getError(state) {

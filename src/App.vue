@@ -2,6 +2,7 @@
 import WeatherLocation from '@/components/WeatherLocation.vue';
 import WeatherTemperature from '@/components/WeatherTemperature';
 import WeatherIndicators from './components/WeatherIndicators.vue';
+import WeatherAnimate from './components/WetherAnimate.vue'
 
 export default {
   name: 'App',
@@ -9,10 +10,8 @@ export default {
     WeatherLocation,
     WeatherTemperature,
     WeatherIndicators,
+    WeatherAnimate,
   },
-  // created() {
-  //   this.$store.dispatch('fetchWeatherData', 'Kirov');
-  // }
 }
 </script>
 
@@ -21,6 +20,7 @@ export default {
     <WeatherLocation/>
     <WeatherTemperature/>
     <WeatherIndicators/>
+    <WeatherAnimate/>
   </div>
   
 </template>
@@ -33,7 +33,7 @@ export default {
   margin: 0;
   padding: 0;
   max-width: 100%;
-  background-color: rgba(72, 150, 222, 1);
+  /* background-color: rgba(72, 150, 222, 1); */
   color: white;
 }
 </style>

@@ -3,9 +3,9 @@ import { mapGetters } from "vuex"
 
 export default {
    computed: {
-      ...mapGetters(["getWeatherIndicators"])
+      ...mapGetters(["getWeatherIndicators", "getWeatherMain"])
    }
-}
+};
 </script>
 
 <template>
@@ -15,7 +15,7 @@ export default {
             <img
                class="imgfirstsection"
                src="../assets/img/windspeed.png"
-               alt=""
+               alt="wind"
             >
             <div class="indicators__alltitle">
                <div class="indicators__title">{{ getWeatherIndicators.wind }}m/s</div>
@@ -26,7 +26,7 @@ export default {
             <img
                class="imgfirstsection"
                src="../assets/img/humidity.png"
-               alt=""
+               alt="humidity"
             >
             <div class="indicators__alltitle">
                <div class="indicators__title">{{ getWeatherIndicators.humidity }}%</div>
@@ -37,7 +37,7 @@ export default {
             <img
                class="imgfirstsection"
                src="../assets/img/cloud.png"
-               alt=""
+               alt="clouds"
             >
             <div class="indicators__alltitle">
                <div class="indicators__title">{{ getWeatherIndicators.clouds }}%</div>
