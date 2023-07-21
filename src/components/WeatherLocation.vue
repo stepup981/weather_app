@@ -4,7 +4,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
    data: () => ({
       search: '',
-      isSearchVisible: false
+      isSearchVisible: true
    }),
    computed: {
       ...mapGetters(["getWeatherMain", "getError"])
@@ -39,7 +39,6 @@ export default {
 <template>
    <div class="location">
       <div class="location__blockcity">
-         <!-- <div class="location__city">{{ getWeatherMain.name }}</div> -->
          <div class="location__change">
             <div 
                @click="getLocationHandler" 
@@ -55,8 +54,7 @@ export default {
                Change city
             </div>
          </div>
-      </div>
-      <Transition name="fade">
+         <Transition name="fade">
          <div
             v-show="isSearchVisible"
             class="search"
@@ -72,14 +70,15 @@ export default {
                class="search__btnloc" 
                @click="getData"
             />
-            <div 
-               class="search__error" 
-               v-if="getError"
-            >
-               No results found!
-            </div>
          </div>
       </Transition>
+      </div>
+      <div 
+         class="search__error" 
+         v-if="getError"
+      >
+         No results found!
+      </div>
    </div>
 </template>
 
@@ -88,11 +87,16 @@ export default {
    padding: 20px 0px 0px 50px;
    font-size: 1.5rem;
 
+   &__blockcity {
+      display: flex;justify-content: flex-start;
+      gap: 10px;
+   }
+
    &__change {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      opacity: 0.7;
+      opacity: 1;
    }
 
    &__mylocation {
@@ -117,7 +121,7 @@ export default {
 }
 
 .search {
-   background-color: rgba(43, 121, 193, 1);
+   background-color: rgba(0,0,0,0.5);
    border-radius: 40px;
    text-align: left;
    color: white;

@@ -89,12 +89,13 @@ export default {
 <style lang="scss">
 .indicators {
    padding: 15px 20px;
-   font-size: 26px;
-   background-color: rgba(43, 121, 193, 1);
+   font-size: 22px;
+   
    border-radius: 15px;
    margin: 0px 50px 50px 50px;
    display: grid;
    grid-template-columns: 1fr 5fr;
+   
    
 
    &__firstsection {
@@ -109,6 +110,7 @@ export default {
       grid-template-columns: 1fr 4fr;
       background-color: inherit;
       align-items: center;
+      color: white;
    }
 
    &__alltitle {
@@ -117,7 +119,7 @@ export default {
 
    &__title {
       background-color: inherit;
-      font-size: 3rem;
+      font-size: 26px;
    }
 
    &__subtitle {
@@ -141,12 +143,12 @@ export default {
 
    &__hour {
       background-color: inherit;
-      font-size: 2rem;
+      font-size: 26px;
    }
 
    &__degree {
       background-color: inherit;
-      font-size: 4rem;
+      font-size: 22px;
    }
 }
 
@@ -157,6 +159,6 @@ export default {
 .imgsecondsection {
    background-color: inherit;
    width: 100%;
-   height: 70%;
+   height: 100%;
 }
 </style>

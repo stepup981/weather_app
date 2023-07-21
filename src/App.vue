@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-  <div class="app">
+  <div>
     <WeatherLocation/>
     <WeatherTemperature/>
     <WeatherIndicators/>
@@ -45,7 +45,7 @@ export default {
   max-width: 100%;
   max-height: 100%;
   /* background-color: rgba(72, 150, 222, 1); */
-  color: white;
+  color: rgb(252, 252, 252);
 }
 
 </style>
