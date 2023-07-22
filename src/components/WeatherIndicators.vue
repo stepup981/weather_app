@@ -119,7 +119,7 @@ export default {
 
    &__title {
       background-color: inherit;
-      font-size: 26px;
+      font-size: 38px;
    }
 
    &__subtitle {
@@ -143,12 +143,12 @@ export default {
 
    &__hour {
       background-color: inherit;
-      font-size: 26px;
+      font-size: 38px;
    }
 
    &__degree {
       background-color: inherit;
-      font-size: 22px;
+      font-size: 38px;
    }
 }
 

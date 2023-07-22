@@ -4,7 +4,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
    data: () => ({
       search: '',
-      isSearchVisible: true
+      isSearchVisible: false
    }),
    computed: {
       ...mapGetters(["getWeatherMain", "getError"])
@@ -54,7 +54,9 @@ export default {
                Change city
             </div>
          </div>
-         <Transition name="fade">
+         <div class="location__city">{{ getWeatherMain.name }}</div>
+      </div>
+      <Transition name="fade">
          <div
             v-show="isSearchVisible"
             class="search"
@@ -72,7 +74,6 @@ export default {
             />
          </div>
       </Transition>
-      </div>
       <div 
          class="search__error" 
          v-if="getError"
@@ -88,7 +89,8 @@ export default {
    font-size: 1.5rem;
 
    &__blockcity {
-      display: flex;justify-content: flex-start;
+      display: flex;
+      justify-content: space-between;
       gap: 10px;
    }
 
@@ -118,15 +120,22 @@ export default {
       padding-left: 8px;
       cursor: pointer;
    }
+
+   &__city {
+      font-size: 32px;
+      padding-right: 50px;
+      
+   }
+
 }
 
 .search {
-   background-color: rgba(0,0,0,0.5);
+   background-color: rgba(255, 255, 255, 0.185);
    border-radius: 40px;
    text-align: left;
    color: white;
    padding: 20px 20px;
-   max-width: 350px;
+   max-width: 270px;
    display: grid;
    grid-template-columns: 1fr 0.3fr;
    align-items: center;
@@ -136,8 +145,9 @@ export default {
    }
 
    &__inploc {
+      max-width: 210px;
       border-radius: 15px;
-      padding: 10px 0px 10px 30px;
+      padding: 10px 0px 10px 23px;
       background-color: inherit;
       font-size: 22px;
       outline: none;
@@ -145,6 +155,7 @@ export default {
       background-image: url(../assets/img/distance.png);
       background-position: left;
       background-repeat: no-repeat;
+      background-color: rgba(255, 255, 255, 0);
    }
 
    &__btnloc {
@@ -158,12 +169,13 @@ export default {
       background-position: center;
       background-repeat: no-repeat;
       cursor: pointer;
+      background-color: rgba(0, 238, 255, 0.185);
    }
 
    &__error {
       background-color: inherit;
       font-size: 1rem;
-      color: rgb(201, 236, 1);
+      color: rgba(24, 199, 176, 0.61);
    }
 }
 
