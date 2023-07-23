@@ -4,7 +4,7 @@ import { mapGetters } from "vuex"
 export default {
    computed: {
       ...mapGetters(["getWeatherIndicators", "getWeatherMain"])
-   }
+   },
 };
 </script>
 
@@ -47,25 +47,25 @@ export default {
       </div>
       <div class="indicators__secondsection">
          <div class="indicators__secondblocksgrid">
-            <div class="indicators__hour">Now</div>
-            <img
-               class="imgsecondsection"
-               src="../assets/img/clear-day.png"
-               alt=""
+            <div class="indicators__day">Now</div>
+            <img 
+            class="imgsecondsection" 
+            :src="'http://openweathermap.org/img/w/' + getWeatherMain.icon + '.png'" 
+            alt="Weather Icon"
             >
-            <div class="indicators__degree">20&#176;</div>
+            <div class="indicators__degree">{{ Math.round(getWeatherMain.temp) }}&deg;</div>
          </div>
          <div class="indicators__secondblocksgrid">
-            <div class="indicators__hour">16</div>
+            <div class="indicators__day">16</div>
             <img
                class="imgsecondsection"
-               src="../assets/img/partly-cloudy-day.png"
+               :src="'http://openweathermap.org/img/w/' + getWeatherMain.icon + '.png'" 
                alt=""
             >
-            <div class="indicators__degree">18&#176;</div>
+            <div class="indicators__degree">{{ Math.round(getWeatherMain.nextTemp) }}&deg;</div>
          </div>
          <div class="indicators__secondblocksgrid">
-            <div class="indicators__hour">18</div>
+            <div class="indicators__day">18</div>
             <img
                class="imgsecondsection"
                src="../assets/img/heavy-showers.png"
@@ -74,7 +74,7 @@ export default {
             <div class="indicators__degree">15&#176;</div>
          </div>
          <div class="indicators__secondblocksgrid">
-            <div class="indicators__hour">20</div>
+            <div class="indicators__day">20</div>
             <img
                class="imgsecondsection"
                src="../assets/img/thunderstorm-showers.png"
@@ -141,7 +141,7 @@ export default {
       padding: 20px 10px 20px 10px;
    }
 
-   &__hour {
+   &__day {
       background-color: inherit;
       font-size: 38px;
    }
@@ -159,6 +159,6 @@ export default {
 .imgsecondsection {
    background-color: inherit;
    width: 100%;
-   height: 100%;
+   height: 70%;
 }
 </style>
