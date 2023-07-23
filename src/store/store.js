@@ -10,7 +10,7 @@ export default createStore ({
    },
    getters: {
       getWeatherMain(state) {
-         const { temp, info, icon, time, name, feelsLike, nextTemp } = state.weatherData;
+         const { temp, info, icon, time, name, feelsLike, nextTemp, nextIcon, nextTempFirst } = state.weatherData;
 
          return {
             temp,
@@ -19,7 +19,9 @@ export default createStore ({
             time,
             name,
             feelsLike,
-            nextTemp
+            nextTemp,
+            nextIcon,
+            nextTempFirst
          };
       },
       getWeatherIndicators(state) {
@@ -49,9 +51,10 @@ export default createStore ({
          try {
             const url = `${state.apiBase}forecast?${search ? `q=${search}&` : ''}${latitude ? `lat=${latitude}&` : ''}${longitude ? `lon=${longitude}&` : ''}units=metric&APPID=${state.apiKey}`;
             const response = await axios.get(url);
+
             const newWeatherData = { 
                name: response.data.city.name,
-               dt: response.data.dt, 
+               dt: response.data.list.dt, 
                temp: response.data.list[0].main.temp, 
                tempMin: response.data.list[0].main.temp_min, 
                tempMax: response.data.list[0].main.temp_max, 
@@ -66,7 +69,9 @@ export default createStore ({
                country: response.data.city.country, 
                lat: response.data.city.coord.lat,
                lon: response.data.city.coord.lon,
-               nextTemp: response.data.list[1].main.temp, 
+               nextTemp: response.data.list[1].main.temp,
+               nextTempFirst: response.data.list[2].main.temp,
+               nextIcon: response.data.list[1].weather[0].icon 
                }; 
                commit("SET_WEATHER_DATA", newWeatherData); 
                commit("SET_ERROR", false); 

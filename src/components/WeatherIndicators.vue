@@ -59,7 +59,7 @@ export default {
             <div class="indicators__day">16</div>
             <img
                class="imgsecondsection"
-               :src="'http://openweathermap.org/img/w/' + getWeatherMain.icon + '.png'" 
+               :src="'http://openweathermap.org/img/w/' + getWeatherMain.nextIcon + '.png'" 
                alt=""
             >
             <div class="indicators__degree">{{ Math.round(getWeatherMain.nextTemp) }}&deg;</div>
@@ -71,7 +71,7 @@ export default {
                src="../assets/img/heavy-showers.png"
                alt=""
             >
-            <div class="indicators__degree">15&#176;</div>
+            <div class="indicators__degree">{{ Math.round(getWeatherMain.nextTempFirst) }}&deg;</div>
          </div>
          <div class="indicators__secondblocksgrid">
             <div class="indicators__day">20</div>
@@ -80,7 +80,7 @@ export default {
                src="../assets/img/thunderstorm-showers.png"
                alt=""
             >
-            <div class="indicators__degree">13&#176;</div>
+            <div class="indicators__degree">{{ Math.round(getWeatherMain.nextTemp) }}&deg;</div>
          </div>
       </div>
    </div>   
@@ -136,8 +136,8 @@ export default {
    &__secondblocksgrid {
       text-align: center;
       background-color: inherit;
-      display: flex;
-      flex-direction: column;
+      // display: flex;
+      // flex-direction: column;
       padding: 20px 10px 20px 10px;
    }
 
@@ -158,7 +158,7 @@ export default {
 
 .imgsecondsection {
    background-color: inherit;
-   width: 100%;
+   width: 50%;
    height: 70%;
 }
 </style>
