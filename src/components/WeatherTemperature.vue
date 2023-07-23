@@ -19,12 +19,20 @@ export default {
       <div class="temperature__weather">
          {{ getWeatherMain.info }}
       </div>
+      <div 
+         class="search__error" 
+         v-if="getError"
+      >
+         No results found!
+      </div>
    </div>
 </template>
 
 <style lang="scss">
 .temperature {
    text-align: center;
+   display: flex;
+   flex-direction: column;
 
    &__degree {
       font-size: 10rem;
@@ -35,15 +43,6 @@ export default {
       padding-right: 40px;
       padding-bottom: 15px;
    }
-
-   &__img {
-      position: absolute;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-
-   }
 }
-
 
 </style>

@@ -10,14 +10,15 @@ export default createStore ({
    },
    getters: {
       getWeatherMain(state) {
-         const { temp, info, icon, time, name } = state.weatherData;
+         const { temp, info, icon, time, name, feelsLike } = state.weatherData;
 
          return {
             temp,
             info,
             icon,
             time,
-            name
+            name,
+            feelsLike
          };
       },
       getWeatherIndicators(state) {
@@ -58,6 +59,7 @@ export default createStore ({
             info: response.data.weather[0].main,
             wind: response.data.wind.speed,
             humidity: response.data.main.humidity,
+            pressure: response.data.main.pressure,
             clouds: response.data.clouds.all,
             country: response.data.sys.country,
             lat: response.data.coord.lat,
