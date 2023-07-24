@@ -10,7 +10,7 @@ export default createStore ({
    },
    getters: {
       getWeatherMain(state) {
-         const { temp, info, icon, time, name, feelsLike, forecast } = state.weatherData;
+         const { temp, info, icon, time, name, feelsLike, } = state.weatherData;
 
          return {
             temp,
@@ -19,7 +19,24 @@ export default createStore ({
             time,
             name,
             feelsLike,
-            forecast
+            forecast: state.weatherData.forecast.reduce((acc, list) => {
+               const day = {
+                  dt: list.dt,
+                  temp: list.main.temp,
+                  tempMin: list.main.temp_min,
+                  tempMax: list.main.temp_max,
+                  feelsLike: list.main.feels_like,
+                  description: list.weather[0].description,
+                  icon: list.weather[0].icon,
+                  info: list.weather[0].main,
+                  wind: list.wind.speed,
+                  humidity: list.main.humidity,
+                  clouds: list.clouds.all,
+               };
+               
+               acc.push(day);
+               return acc;
+            },),
          };
       },
       getWeatherIndicators(state) {
@@ -53,17 +70,6 @@ export default createStore ({
             const newWeatherData = {
             forecast: response.data.list,
             name: response.data.city.name,
-            temp: response.data.main.temp,
-            tempMin: response.data.main.temp_min,
-            tempMax: response.data.main.temp_max,
-            feelsLike: response.data.main.feels_like,
-            description: response.data.weather[0].description,
-            icon: response.data.weather[0].icon.substring(0, 2),
-            info: response.data.weather[0].main,
-            wind: response.data.wind.speed,
-            humidity: response.data.main.humidity,
-            clouds: response.data.clouds.all,
-            country: response.data.sys.country,
             lat: response.data.coord.lat,
             lon: response.data.coord.lon,
                }; 
