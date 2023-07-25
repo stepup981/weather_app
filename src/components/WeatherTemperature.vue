@@ -4,17 +4,21 @@ import { mapGetters } from "vuex";
 export default {
    computed: {
       ...mapGetters(["getWeatherMain"])
-   }
+   },
 };
 </script>
 
 <template>
    <div
-      v-if="getWeatherMain.temp"
       class="temperature"
    >
-      <div class="temperature__degree">
-         {{ Math.round(getWeatherMain.temp) }}&deg; 
+      <div 
+         class="temperature__degree" 
+         v-for="item in getWeatherMain.forecast"
+         :key="item.dt"
+      >
+         {{ Math.round(getWeatherMain.forecast.temp) }}&deg;
+          
       </div>
       <div class="temperature__weather">
          {{ getWeatherMain.info }}

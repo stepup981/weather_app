@@ -74,7 +74,6 @@ export default {
             />
          </div>
       </Transition>
-     
    </div>
 </template>
 

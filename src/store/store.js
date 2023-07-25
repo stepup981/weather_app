@@ -10,7 +10,7 @@ export default createStore ({
    },
    getters: {
       getWeatherMain(state) {
-         const { temp, info, icon, time, name, feelsLike, } = state.weatherData;
+         const { temp, info, icon, time, name, forecast } = state.weatherData;
 
          return {
             temp,
@@ -18,25 +18,7 @@ export default createStore ({
             icon,
             time,
             name,
-            feelsLike,
-            forecast: state.weatherData.forecast.reduce((acc, list) => {
-               const day = {
-                  dt: list.dt,
-                  temp: list.main.temp,
-                  tempMin: list.main.temp_min,
-                  tempMax: list.main.temp_max,
-                  feelsLike: list.main.feels_like,
-                  description: list.weather[0].description,
-                  icon: list.weather[0].icon,
-                  info: list.weather[0].main,
-                  wind: list.wind.speed,
-                  humidity: list.main.humidity,
-                  clouds: list.clouds.all,
-               };
-               
-               acc.push(day);
-               return acc;
-            },),
+            forecast
          };
       },
       getWeatherIndicators(state) {
@@ -64,15 +46,34 @@ export default createStore ({
    actions: {
       async fetchWeatherData({ commit, state }, { search, latitude, longitude } ) {
          try {
-            const url = `${state.apiBase}forecast?${search ? `q=${search}&` : ''}${latitude ? `lat=${latitude}&` : ''}${longitude ? `lon=${longitude}&` : ''}units=metric&APPID=${state.apiKey}`;
+            const url = `${state.apiBase}forecast?${search ? `q=${search}&` : ''}${latitude ? `lat=${latitude}&` : ''}${longitude ? `lon=${longitude}&` : ''}cnt=4&units=metric&APPID=${state.apiKey}`;
             const response = await axios.get(url);
             
             const newWeatherData = {
-            forecast: response.data.list,
-            name: response.data.city.name,
-            lat: response.data.coord.lat,
-            lon: response.data.coord.lon,
-               }; 
+               forecast: response.data.list.reduce((acc, item) => {
+                  const day = {
+                     dt: item.dt,
+                     temp: item.main.temp,
+                     tempMin: item.main.temp_min,
+                     tempMax: item.main.temp_max,
+                     feelsLike: item.main.feels_like,
+                     description: item.weather[0].description,
+                     icon: item.weather[0].icon,
+                     info: item.weather[0].main,
+                     wind: item.wind.speed,
+                     humidity: item.main.humidity,
+                     clouds: item.clouds.all,
+                  };
+                  
+                  acc.push(day);
+                  return acc;
+                  
+               }, []),
+               name: response.data.city.name,
+               lat: response.data.city.coord.lat,
+               lon: response.data.city.coord.lon,
+            }; 
+               console.log(newWeatherData);
                commit("SET_WEATHER_DATA", newWeatherData); 
                commit("SET_ERROR", false); 
             } catch (error) { 

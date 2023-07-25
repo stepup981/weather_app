@@ -40,7 +40,8 @@ export default {
   padding: 0;
   max-width: 100%;
   max-height: 100%;
-  color: rgb(252, 252, 252);
+  color: rgb(255, 255, 255);
+  background-color: aqua;
 }
 
 </style>

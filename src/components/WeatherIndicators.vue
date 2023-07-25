@@ -48,20 +48,20 @@ export default {
       <div class="indicators__secondsection">
          <div class="indicators__secondblocksgrid">
             <div class="indicators__day">Now</div>
-            <img 
+            <!-- <img 
             class="imgsecondsection" 
             :src="'http://openweathermap.org/img/w/' + getWeatherMain.icon + '.png'" 
             alt="Weather Icon"
-            >
+            > -->
             <div class="indicators__degree">{{ Math.round(getWeatherMain.temp) }}&deg;</div>
          </div>
          <div class="indicators__secondblocksgrid">
             <div class="indicators__day">16</div>
-            <img
+            <!-- <img
                class="imgsecondsection"
                :src="'http://openweathermap.org/img/w/' + getWeatherMain.nextIcon + '.png'" 
                alt=""
-            >
+            > -->
             <div class="indicators__degree">{{ Math.round(getWeatherMain.nextTemp) }}&deg;</div>
          </div>
          <div class="indicators__secondblocksgrid">
