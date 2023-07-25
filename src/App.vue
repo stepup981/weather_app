@@ -41,7 +41,6 @@ export default {
   max-width: 100%;
   max-height: 100%;
   color: rgb(255, 255, 255);
-  background-color: aqua;
 }
 
 </style>

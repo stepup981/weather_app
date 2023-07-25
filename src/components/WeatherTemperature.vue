@@ -9,24 +9,20 @@ export default {
 </script>
 
 <template>
-   <div
-      class="temperature"
-   >
-      <div 
-         class="temperature__degree" 
-         v-for="item in getWeatherMain.forecast"
-         :key="item.dt"
-      >
-         {{ Math.round(getWeatherMain.forecast.temp) }}&deg;
-          
+   <div>
+      <div v-for="(item, index) in getWeatherMain.forecast" :key="index">
+         <div class="temperature" v-if="index === 0">
+            <div class="temperature__degree">
+               {{ Math.round(item.temp) }}&deg;
+            </div>
+            <div class="temperature__weather">
+               {{ item.info }}
+            </div>
+         </div>
       </div>
-      <div class="temperature__weather">
-         {{ getWeatherMain.info }}
-      </div>
-      <div 
-         class="search__error" 
+      <div class="search__error" 
          v-if="getError"
-      >
+         >
          No results found!
       </div>
    </div>

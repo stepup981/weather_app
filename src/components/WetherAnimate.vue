@@ -1,12 +1,12 @@
   <template>
-    <div>
+    <div v-for="(item, index) in getWeatherMain.forecast" :key="index">
       <div
-        class="weather-animate"
+        class="weather-animate" v-if="index === 0"
         :class="[
-        {'weather-rain': getWeatherMain.info == 'Rain'},
-        {'weather-snow': getWeatherMain.info == 'Snow'},
-        {'weather-clear': getWeatherMain.info == 'Clear' || getWeatherMain.info == 'Mist'},
-        {'weather-clouds': getWeatherMain.info == 'Clouds' || getWeatherMain.info == 'Haze'},
+        {'weather-rain': item.info == 'Rain'},
+        {'weather-snow': item.info == 'Snow'},
+        {'weather-clear': item.info == 'Clear' || getWeatherMain.info == 'Mist'},
+        {'weather-clouds': item.info == 'Clouds' || getWeatherMain.info == 'Haze'},
         {'error': getError}]"
       ></div>
     </div>
