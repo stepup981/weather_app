@@ -74,11 +74,6 @@ export default {
             />
          </div>
       </Transition>
-      <div class="search__error" 
-         v-if="getError"
-         >
-         No results found!
-      </div>
    </div>
 </template>
 

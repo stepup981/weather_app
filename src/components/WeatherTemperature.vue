@@ -18,6 +18,11 @@ export default {
             <div class="temperature__weather">
                {{ item.info }}
             </div>
+            <div class="search__error" 
+               v-if="getError"
+               >
+               No results found!
+            </div>
          </div>
       </div>
    </div>
@@ -30,11 +35,11 @@ export default {
    flex-direction: column;
 
    &__degree {
-      font-size: 10rem;
+      font-size: 9rem;
    }
 
    &__weather {
-      font-size: 3.8rem;
+      font-size: 3.5rem;
       padding-right: 40px;
       padding-bottom: 15px;
    }

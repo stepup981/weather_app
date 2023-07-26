@@ -6,11 +6,13 @@ export default {
       ...mapGetters(["getWeatherIndicators", "getWeatherMain"])
    },
    methods: {
-      getWeekday(dt) {
-         const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-         const date = new Date(dt * 1000); 
-         const weekday = daysOfWeek[date.getDay()]; 
-         return weekday;
+      getHours(dt) {
+         const date = new Date(dt * 1000);
+         const hours = date.getHours();
+         return hours;
+      },
+      getIconUrl(icon) {
+         return require(`@/assets/img/icons/${icon}.png`); // Указывайте правильный путь к вашим изображениям
       }
    }
 };
@@ -63,10 +65,10 @@ export default {
       <div class="indicators__secondsection" >
          <div v-for="(item, index) in getWeatherMain.forecast" :key="index">
             <div class="indicators__secondblocksgrid" v-if="index !== 4">
-               <div class="indicators__day">{{ getWeekday(item.dt) }}</div>
+               <div class="indicators__day">{{ getHours(item.dt) }}:00</div>
                <img 
                   class="imgsecondsection" 
-                  :src="'http://openweathermap.org/img/w/' + item.icon + '.png'" 
+                  :src="getIconUrl(item.icon)" 
                   alt="Weather Icon"
                >
                <div class="indicators__degree">{{Math.round(item.temp)}}&deg;</div>
@@ -143,7 +145,7 @@ export default {
 .imgsecondsection {
    background-color: inherit;
    width: 50%;
-   height: 70%;
+   height: 50%;
 }
 
 </style>
