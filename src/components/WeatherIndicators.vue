@@ -8,8 +8,8 @@ export default {
    methods: {
       getWeekday(dt) {
          const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-         const date = new Date(dt * 1000); // Преобразуем значение dt в объект Date
-         const weekday = daysOfWeek[date.getDay()]; // Используем метод getDay(), чтобы получить индекс дня недели и найти соответствующий день недели из массива daysOfWeek
+         const date = new Date(dt * 1000); 
+         const weekday = daysOfWeek[date.getDay()]; 
          return weekday;
       }
    }

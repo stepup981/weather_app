@@ -6,10 +6,10 @@
         {'weather-rain': item.info == 'Rain'},
         {'weather-snow': item.info == 'Snow'},
         {'weather-clear': item.info == 'Clear' || getWeatherMain.info == 'Mist'},
-        {'weather-clouds': item.info == 'Clouds' || getWeatherMain.info == 'Haze'},
-        {'error': getError}]"
+        {'weather-clouds': item.info == 'Clouds' || getWeatherMain.info == 'Haze'}]"
       ></div>
     </div>
+    <div class="weather-animate" :class="[{'error':getError}]"></div>
   </template>
   
   <script>
@@ -161,6 +161,6 @@
   }
   
   &.error {
-    background-image: url("../assets/img/404 eror.png");
+    background-image: url("../assets/img/404eror.png");
   }
   </style>
