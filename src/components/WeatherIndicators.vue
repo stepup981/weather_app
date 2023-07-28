@@ -12,7 +12,7 @@ export default {
          return hours;
       },
       getIconUrl(icon) {
-         return require(`@/assets/img/icons/${icon}.png`); // Указывайте правильный путь к вашим изображениям
+         return require(`@/assets/img/icons/${icon}.png`);
       }
    }
 };
@@ -20,62 +20,41 @@ export default {
 
 <template>
    <div class="indicators">
-         <div>
-            <div class="indicators__firstsection" v-for="(item, index) in getWeatherMain.forecast" :key="index">
-               <div class="indicators__blocksgrid" v-if="index === 0" >
-            <img
-               class="imgfirstsection"
-               src="../assets/img/windspeed.png"
-               alt="wind"
-            >
-            <div class="indicators__alltitle">
-               <div class="indicators__title">{{ item.wind }}m/s</div>
-               <div class="indicators__subtitle">Wind speed</div>
+      <div>
+         <div class="indicators__firstsection" v-for="(item, index) in getWeatherMain.forecast" :key="index">
+            <div class="indicators__blocksgrid" v-if="index === 0">
+               <img class="imgfirstsection" src="../assets/img/windspeed.png" alt="wind">
+               <div class="indicators__alltitle">
+                  <div class="indicators__title">{{ item.wind }}m/s</div>
+                  <div class="indicators__subtitle">Wind speed</div>
+               </div>
+            </div>
+            <div class="indicators__blocksgrid" v-if="index === 0">
+               <img class="imgfirstsection" src="../assets/img/humidity.png" alt="humidity">
+               <div class="indicators__alltitle">
+                  <div class="indicators__title">{{ item.humidity }}%</div>
+                  <div class="indicators__subtitle">Humidity</div>
+               </div>
+            </div>
+            <div class="indicators__blocksgrid" v-if="index === 0">
+               <img class="imgfirstsection" src="../assets/img/cloud.png" alt="clouds">
+               <div class="indicators__alltitle">
+                  <div class="indicators__title">{{ item.clouds }}%</div>
+                  <div class="indicators__subtitle">Cloudiness</div>
+               </div>
             </div>
          </div>
-         <div class="indicators__blocksgrid" v-if="index === 0">
-            <img
-               class="imgfirstsection"
-               src="../assets/img/humidity.png"
-               alt="humidity"
-            >
-            <div class="indicators__alltitle">
-               <div class="indicators__title">{{ item.humidity }}%</div>
-               <div class="indicators__subtitle">Humidity</div>
-            </div>
-         </div>
-         <div class="indicators__blocksgrid" v-if="index === 0">
-            <img
-               class="imgfirstsection"
-               src="../assets/img/cloud.png"
-               alt="clouds"
-            >
-            <div class="indicators__alltitle">
-               <div class="indicators__title">{{ item.clouds }}%</div>
-               <div class="indicators__subtitle">Cloudiness</div>
-            </div>
-         </div>
-            </div>
-         
       </div>
-      
-      
-
-      
-      <div class="indicators__secondsection" >
+      <div class="indicators__secondsection">
          <div v-for="(item, index) in getWeatherMain.forecast" :key="index">
             <div class="indicators__secondblocksgrid" v-if="index !== 4">
                <div class="indicators__day">{{ getHours(item.dt) }}:00</div>
-               <img 
-                  class="imgsecondsection" 
-                  :src="getIconUrl(item.icon)" 
-                  alt="Weather Icon"
-               >
-               <div class="indicators__degree">{{Math.round(item.temp)}}&deg;</div>
+               <img class="imgsecondsection" :src="getIconUrl(item.icon)" alt="Weather Icon">
+               <div class="indicators__degree">{{ Math.round(item.temp) }}&deg;</div>
             </div>
          </div>
       </div>
-   </div>   
+   </div>
 </template>
 
 <style lang="scss">
@@ -86,7 +65,7 @@ export default {
    margin: 0px 50px 50px 50px;
    display: grid;
    grid-template-columns: 1fr 5fr;
-   
+
    &__firstsection {
       background-color: inherit;
       border-right: 4px solid white;
@@ -147,5 +126,4 @@ export default {
    width: 50%;
    height: 50%;
 }
-
 </style>

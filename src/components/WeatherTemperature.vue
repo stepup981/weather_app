@@ -18,9 +18,7 @@ export default {
             <div class="temperature__weather">
                {{ item.info }}
             </div>
-            <div class="search__error" 
-               v-if="getError"
-               >
+            <div class="search__error" v-if="getError">
                No results found!
             </div>
          </div>
@@ -44,5 +42,4 @@ export default {
       padding-bottom: 15px;
    }
 }
-
 </style>

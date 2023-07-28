@@ -1,7 +1,7 @@
 import { createStore } from 'vuex';
 import axios from "axios";
 
-export default createStore ({
+export default createStore({
    state: {
       apiBase: "https://api.openweathermap.org/data/2.5/",
       apiKey: "7b0cd3aa9c808b272f5687c5c4a2997f",
@@ -23,7 +23,7 @@ export default createStore ({
       },
       getWeatherIndicators(state) {
          const { wind, humidity, clouds, pressure } = state.weatherData;
-         
+
          return {
             wind,
             humidity,
@@ -44,11 +44,11 @@ export default createStore ({
       },
    },
    actions: {
-      async fetchWeatherData({ commit, state }, { search, latitude, longitude } ) {
+      async fetchWeatherData({ commit, state }, { search, latitude, longitude }) {
          try {
             const url = `${state.apiBase}forecast?${search ? `q=${search}&` : ''}${latitude ? `lat=${latitude}&` : ''}${longitude ? `lon=${longitude}&` : ''}cnt=4&units=metric&APPID=${state.apiKey}`;
             const response = await axios.get(url);
-            
+
             const newWeatherData = {
                forecast: response.data.list.reduce((acc, item) => {
                   const day = {
@@ -64,23 +64,23 @@ export default createStore ({
                      humidity: item.main.humidity,
                      clouds: item.clouds.all,
                   };
-                  
+
                   acc.push(day);
                   return acc;
-                  
+
                }, []),
                name: response.data.city.name,
                lat: response.data.city.coord.lat,
                lon: response.data.city.coord.lon,
-            }; 
-               console.log(newWeatherData);
-               commit("SET_WEATHER_DATA", newWeatherData); 
-               commit("SET_ERROR", false); 
-            } catch (error) { 
-               console.error(error); 
-               commit("SET_ERROR", true); 
-               commit("SET_WEATHER_DATA", {}); 
-            } 
-         }, 
-      } 
-   })
+            };
+            console.log(newWeatherData);
+            commit("SET_WEATHER_DATA", newWeatherData);
+            commit("SET_ERROR", false);
+         } catch (error) {
+            console.error(error);
+            commit("SET_ERROR", true);
+            commit("SET_WEATHER_DATA", {});
+         }
+      },
+   }
+})

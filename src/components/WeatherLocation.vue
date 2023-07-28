@@ -9,7 +9,7 @@ export default {
    computed: {
       ...mapGetters(["getWeatherMain", "getError"])
    },
-   mounted () {
+   mounted() {
       this.getLocationHandler();
    },
    methods: {
@@ -25,7 +25,7 @@ export default {
 
       getLocationHandler() {
          if (('!geolocation') in navigator) return alert('Geolocation is not supported');
-         
+
          navigator.geolocation.getCurrentPosition(async (position) => {
             const { latitude, longitude } = position.coords;
 
@@ -43,35 +43,24 @@ export default {
             <div 
                @click="getLocationHandler" 
                class="location__mylocation"
-            >
+               >
                My location
             </div>
             <div class="location__stick"></div>
             <div 
                @click="toggleSearchVisibility" 
                class="location__changelocation"
-            >
+               >
                Change city
             </div>
          </div>
          <div class="location__city">{{ getWeatherMain.name }}</div>
       </div>
       <Transition name="fade">
-         <div
-            v-show="isSearchVisible"
-            class="search"
-         >
-            <input
-               class="search__inploc" 
-               type="text" 
-               placeholder="Enter your location"
-               v-model.trim="search"
-               @keydown.enter="getData"
-            >
-            <button 
-               class="search__btnloc" 
-               @click="getData"
-            />
+         <div v-show="isSearchVisible" class="search">
+            <input class="search__inploc" type="text" placeholder="Enter your location" v-model.trim="search"
+               @keydown.enter="getData">
+            <button class="search__btnloc" @click="getData" />
          </div>
       </Transition>
    </div>
@@ -118,7 +107,7 @@ export default {
    &__city {
       font-size: 32px;
       padding-right: 50px;
-      
+
    }
 
 }
