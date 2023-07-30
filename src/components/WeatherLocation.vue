@@ -58,7 +58,7 @@ export default {
       </div>
       <Transition name="fade">
          <div v-show="isSearchVisible" class="search">
-            <input class="search__inploc" type="text" placeholder="Enter your location" v-model.trim="search"
+            <input class="search__inploc" type="text" placeholder="Enter your location" v-model.trim="search" 
                @keydown.enter="getData">
             <button class="search__btnloc" @click="getData" />
          </div>

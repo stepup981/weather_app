@@ -23,7 +23,7 @@ export default {
       <div>
          <div class="indicators__firstsection" v-for="(item, index) in getWeatherMain.forecast" :key="index">
             <div class="indicators__blocksgrid" v-if="index === 0">
-               <img class="imgfirstsection" src="../assets/img/windspeed.png" alt="wind">
+               <img class="indicators__imgfirstsection" src="../assets/img/windspeed.png" alt="wind">
                <div class="indicators__alltitle">
                   <div class="indicators__title">{{ item.wind }}m/s</div>
                   <div class="indicators__subtitle">Wind speed</div>
@@ -49,7 +49,7 @@ export default {
          <div v-for="(item, index) in getWeatherMain.forecast" :key="index">
             <div class="indicators__secondblocksgrid" v-if="index !== 4">
                <div class="indicators__day">{{ getHours(item.dt) }}:00</div>
-               <img class="imgsecondsection" :src="getIconUrl(item.icon)" alt="Weather Icon">
+               <img class="indicators__imgsecondsection" :src="getIconUrl(item.icon)" alt="Weather Icon">
                <div class="indicators__degree">{{ Math.round(item.temp) }}&deg;</div>
             </div>
          </div>
@@ -115,15 +115,17 @@ export default {
       background-color: inherit;
       font-size: 38px;
    }
-}
 
-.imgfirstsection {
+   &__imgfirstsection {
    background-color: inherit;
-}
+   }
 
-.imgsecondsection {
+   &__imgsecondsection {
    background-color: inherit;
    width: 50%;
    height: 50%;
+   }
 }
+
+
 </style>
